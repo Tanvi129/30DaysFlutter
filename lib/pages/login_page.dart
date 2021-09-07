@@ -14,17 +14,19 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
 
   moveToHome(BuildContext context) async {
-    if(_formKey.currentState.validate()){
+    if(_formKey.currentState!.validate()){
       
       setState(() {
       changeButton = true;
+
     });
+    await Future.delayed(Duration(seconds: 1));
+    await Navigator.pushNamed(context, MyRoutes.homeRoute);
 
     }
     
     
-    await Future.delayed(Duration(seconds: 1));
-    await Navigator.pushNamed(context, MyRoutes.homeRoute);
+    
     setState(() {
       changeButton = false;
     });
@@ -70,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                         labelText: "Username",
                       ),
                       validator: (value) {
-                          if (value.isEmpty) {
+                          if (value?.isEmpty?? true) {
                             return "Username cannot be empty";
                           }
 
@@ -88,9 +90,9 @@ class _LoginPageState extends State<LoginPage> {
                         labelText: "Password",
                       ),
                       validator: (value) {
-                          if (value.isEmpty) {
+                          if (value!.isEmpty) {
                             return "Password cannot be empty";
-                          }else if(value.length< 6){
+                          }else if(value.length < 6 ){
                             return "Password cannot be less than 6 characters";
                           }
 
