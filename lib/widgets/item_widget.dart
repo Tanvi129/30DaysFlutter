@@ -10,21 +10,20 @@ class ItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool imageAvailable = false;
-    if (item.image == null) {
-      imageAvailable = false;
-    } else {
-      imageAvailable = true;
-    }
+    // bool imageAvailable = false;
+    // if (item.image == null) {
+    //   imageAvailable = false;
+    // } else {
+    //   imageAvailable = true;
+    // }
 
     return Card(
       child: ListTile(
         onTap: () {
           print("Button Pressed");
         },
-        leading: imageAvailable
-            ? Image.network(item.image ?? "assets/images/notfound.png")
-            : Image.asset("assets/images/notfound.png"),
+        leading: Image.network(item.image ),
+            
         title: Text(item.name),
         subtitle: Text(item.desc ?? "Not Available"),
         trailing: Text(

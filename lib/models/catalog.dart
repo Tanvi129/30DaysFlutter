@@ -24,7 +24,7 @@ class Item {
   final String? desc;
   final num price;
   final String? color;
-  final String? image;
+  final String image;
 
   Item(
       {required this.id,
@@ -32,7 +32,7 @@ class Item {
       this.desc,
       required this.price,
       this.color,
-      this.image});
+      required this.image});
 
       factory Item.fromMap(Map<String,dynamic> map){
         
